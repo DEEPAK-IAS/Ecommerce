@@ -18,9 +18,20 @@ body {
   overflow-x: hidden;
 }
 
-p{
+p {
   font-size: 14px;
   line-height: 25px;
+  margin-bottom: 10px !important;
+  margin-top: 10px !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
 }
 
 ::-webkit-scrollbar {
@@ -49,6 +60,11 @@ p{
 }
 .btn-org:hover {
   background: #171717 !important;
+}
+
+.btn-lg {
+  font-size: 18px;
+  padding: 10px 20px !important;
 }
 
 .link:hover {
@@ -269,7 +285,7 @@ footer form input::placeholder {
 }
 
 .zoomProductSliderThumbs .swiper-button-next {
-  bottom: 35px !important;
+  bottom: 0px !important;
   right: inherit !important;
   top: inherit !important;
   width: 100% !important;
@@ -289,4 +305,42 @@ footer form input::placeholder {
 }
 .zoomProductSliderThumbs .swiper-button-prev::after {
   transform: rotate(90deg);
+}
+
+.productContent .actions Button {
+  min-width: 40px !important;
+  border: 2px solid rgba(0, 0, 0, 0.1) !important;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* For Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* For general (fallback) */
+input[type="number"] {
+  appearance: textfield;
+}
+
+.reviewScroll ::-webkit-scrollbar-thumb {
+  background: #ccc !important;
+}
+
+.productDetailsModal .MuiDialogContent-root {
+  padding: 0px !important;
+}
+
+
+
+.cartPanel .MuiPaper-root {
+  width: 400px !important;
+  overflow: hidden !important;
 }

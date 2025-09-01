@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../ProductItem/style.css";
 import { Link } from "react-router-dom";
 import Rating from "@mui/material/Rating";
@@ -9,8 +9,13 @@ import Button from "@mui/material/Button";
 import { FaRegHeart } from "react-icons/fa";
 import { IoGitCompareOutline } from "react-icons/io5";
 import { MdZoomOutMap } from "react-icons/md";
+import { MyContext } from "../../App";
 
 const ProductItem = () => {
+
+
+  const context = useContext(MyContext);
+
   return (
     <div className="productItem rounded-md overflow-hidden border-1 border-[rgba(0,0,0,0.1)] shadow-lg ">
       <div className="group imgWrapper w-[100%] overflow-hidden  rounded-md relative">
@@ -34,7 +39,7 @@ const ProductItem = () => {
 
         <div className="actions absolute top-[-200px] right-[5px] z-50 flex items-center gap-2 flex-col w-[50px] transition-all duration-400 group-hover:top-[15px] opacity-0 group-hover:opacity-100">
           <Tooltip title="View Product Details" placement="left-start">
-            <Button className="!w-[30px] !h-[30px] !min-w-[30px] !rounded-full !bg-white text-black hover:!bg-primary hover:text-white group">
+            <Button className="!w-[30px] !h-[30px] !min-w-[30px] !rounded-full !bg-white text-black hover:!bg-primary hover:text-white group" onClick={() => context.setOpenProductDetailsModal(true)}>
               <MdZoomOutMap className="text-[18px] !text-black group-hover:text-white hover:!text-white" />
             </Button>
           </Tooltip>
@@ -52,7 +57,7 @@ const ProductItem = () => {
       </div>
 
       <div className="info p-3 py-5">
-        <h6 className="text-[13px]">
+        <h6 className="text-[13px] !font-[400]">
           <Link to={"/"} className="link transition-all">
             Soylent Green
           </Link>
