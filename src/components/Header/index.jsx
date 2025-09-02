@@ -10,6 +10,8 @@ import { IoGitCompare } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import Tooltip from "@mui/material/Tooltip";
 import { MyContext } from "../../App";
+import { Button } from "@mui/material";
+import { FaRegUser } from "react-icons/fa6";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -21,9 +23,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const Header = () => {
-
   const context = useContext(MyContext);
-
 
   return (
     <header className="bg-white">
@@ -66,26 +66,42 @@ const Header = () => {
               <img src="/logo.png" alt="" />
             </Link>
           </div>
-          <div className="col2 w-[45%]">
+          <div className="col2 w-[40%]">
             <Search />
           </div>
-          <div className="col3 w-[30%] flex items-center justify-end">
+          <div className="col3 w-[35%] flex items-center justify-end">
             <ul className="flex items-center gap-3">
-              <li className="list-none ">
-                <Link
-                  to={"/login"}
-                  className="link transition text-[14px] font-[500]"
-                >
-                  Login
-                </Link>
-                &nbsp; / &nbsp;
-                <Link
-                  to={"/register"}
-                  className="link transition text-[14px] font-[500]"
-                >
-                  Register
-                </Link>
-              </li>
+              {context.isLogin === false ? (
+                <li className="list-none ">
+                  <Link
+                    to={"/login"}
+                    className="link transition text-[14px] font-[500]"
+                  >
+                    Login
+                  </Link>
+                  &nbsp; / &nbsp;
+                  <Link
+                    to={"/register"}
+                    className="link transition text-[14px] font-[500]"
+                  >
+                    Register
+                  </Link>
+                </li>
+              ) : (
+                <Button className="text-[#000] myAccountWrap flex items-center gap-3 cursor-pointer">
+                  <Button className="!w-[40px] !h-[40px] !min-w-[40px] !rounded-full !bg-[#f1f1f1]">
+                    <FaRegUser  className="text-[16px] text-[rgba(0,0,0,0.7)]"/>
+                  </Button>
+
+                  <div className="info flex flex-col">
+                    <h4 className="leading-3 text-[14px] text-[rgba(0,0,0,0.6)] font-[500] mb-1 capitalize text-left justify-start">Deepak surya</h4>
+                    <span className="text-[13px] text-[rgba(0,0,0,0.6)] font-[400] capitalize justify-start">deepaksurya2002dgl@gmail.com</span>
+                  </div>
+
+
+                </Button>
+              )}
+
               <li>
                 <Tooltip title="compare">
                   <IconButton aria-label="cart">
@@ -106,7 +122,10 @@ const Header = () => {
               </li>
               <li>
                 <Tooltip title="cart">
-                  <IconButton aria-label="cart" onClick={() => context.setOpenCartPanel(true)}>
+                  <IconButton
+                    aria-label="cart"
+                    onClick={() => context.setOpenCartPanel(true)}
+                  >
                     <StyledBadge badgeContent={4} color="secondary">
                       <MdOutlineShoppingCart />
                     </StyledBadge>
@@ -118,8 +137,7 @@ const Header = () => {
         </div>
       </div>
 
-      <Navigation/>
-
+      <Navigation />
     </header>
   );
 };
